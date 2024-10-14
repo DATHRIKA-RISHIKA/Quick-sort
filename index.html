@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick sort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quick Sort </h1>
+        <p>Understand the Quick sort algorithm step by step with interactive examples</p>
+    </header>
+
+    <main>
+        <section class="content">
+            <h2>What is Quick Sort?</h2>
+            <p>Quick Sort is an efficient sorting algorithm that follows the divide-and-conquer paradigm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.</p>
+
+            <h3>How Quick Sort Works:</h3>
+            <ol>
+                <li>
+                    <strong>Choose a Pivot:</strong>
+                    <span>Select an element from the array as the pivot. The choice of pivot can vary (e.g., first element, last element, random element, or median).</span>
+                </li>
+                <li>
+                    
+                        <strong>Partition the Array:</strong>
+                    
+                    <span> Rearrange the array around the pivot. After partitioning, all elements smaller than the pivot will be on its left, and all elements greater than the pivot will be on its right. The pivot is then in its correct position, and we obtain the index of the pivot.</span>
+                </li>
+                <li>
+                    
+                        <strong>Recursively Call:</strong>
+                    
+                    <span> Recursively apply the same process to the two partitioned sub-arrays (left and right of the pivot).</span>
+                </li>
+                <li>
+
+                        <strong>Base Case:</strong>
+                    
+                    <span> The recursion stops when there is only one element left in the sub-array, as a single element is already sorted.</span>
+                </li>
+            </ol>
+            <div class="sidebar"></div>
+            <p>Here’s a basic overview of how the QuickSort algorithm works.</p>
+            <h2>Visual Representation</h2>
+            <br>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240926172924/Heap-Sort-Recursive-Illustration.webp" alt="Quick Sort Diagram" class="center">
+            <br>
+            <br>
+            <p>Let us understand the working of partition algorithm with the help of the following example:</p>
+            <img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173637/quick-sort-1.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173637/quick-sort-1.webp" alt="quick-sort-1.webp">
+            <img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173638/quick-sort-2.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173638/quick-sort-2.webp" alt="quick-sort-2.webp">
+            <img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173639/quick-sort-4.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173639/quick-sort-4.webp" alt="quick-sort-4.webp">
+            <img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173640/quick-sort-5.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173640/quick-sort-5.webp" alt="quick-sort-5.webp">
+            <img class="gfg-preview-carousel-img" src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173641/quick-sort-6.webp" data-src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173641/quick-sort-6.webp" alt="quick-sort-6.webp">
+            <br>
+            <br>
+            <h2>Illustration of QuickSort Algorithm</h2>
+            <br>
+            <br>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240925173636/quick-sort--images.webp" alt="illustration of quick sort" class="center">
+            <br>
+            <br>
+            <p dir="ltr">
+                <span>In the previous step, we looked at how the</span>
+                <strong> partitioning </strong>
+                <span>process rearranges the array based on the chosen </span>
+                <strong>pivot</strong>
+                <span>. Next, we apply the same method recursively to the smaller sub-arrays on the </span>
+                <strong>left </strong>
+                <span>and </span>
+                <strong>right</strong>
+                <span> of the pivot. Each time, we select new pivots and partition the arrays again. This process continues until only one element is left, which is always sorted. Once every element is in its correct position, the entire array is sorted.</span>
+            </p>
+            <br>
+            <br>
+            <div>
+                <h2>Quick Sort Using JavaScript </h2>
+                
+                <pre><code class="code">
+                    function quickSort(arr, left , right ) {  //where left = 0 and right = size of array
+                        if (left >= right) {
+                            return; // Base case: array with 1 or 0 elements
+                    }
+                    // Partitioning the array
+                    let pivot = arr[left];
+                    let i = left + 1;
+                    let j = right;
+
+                    // Rearrange elements around the pivot
+                    while (i <= j) {
+                        // Move i right as long as arr[i] >= pivot
+                        while((arr[i]<pivot) && (i<=right)){
+                           i++;
+                        }
+                        // Move j left as long as arr[j] < pivot
+                        while((arr[j]>pivot) && (j>=left)) {
+                           j--;
+                        }
+                        // Swap if necessary
+                        if (i < j) {
+                           [arr[i], arr[j]] = [arr[j], arr[i]];
+                        }
+                    }
+                    // Place the pivot in the correct position
+                    [arr[left], arr[j]] = [arr[j], arr[left]];
+
+                    // Recursively sort the left and right partitions
+                    quickSort(arr, left, j - 1);  // Left side of pivot
+                    quickSort(arr, j + 1, right); // Right side of pivot
+                }
+                </code></pre>
+                
+            </div>
+            
+            <br>
+            <p class="click">Click the below link(<b>Quick Sort</b>) for giving your own input and covert it into sorted array</p>
+            <div class="work">
+                <a href="QuickSortWorking.html" target="_blank" class="link" >Quick Sort</a>
+            </div>
+
+    </main> 
+    <footer>
+        <p>Interactive Quick Sort Page © 2024</p>
+    </footer>
+</body>
+</html>
